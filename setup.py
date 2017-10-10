@@ -1,6 +1,9 @@
 # coding: UTF-8
 from setuptools import setup
 
+
+from setuptools.extension import Extension
+
 # TODO:
 # - Wrap learning.
 # - Make LabelCompatibility, UnaryEnergy, PairwisePotential extensible? (Maybe overkill?)
@@ -10,7 +13,10 @@ from setuptools import setup
 # Otherwise, use the pre-built (by someone who has Cython, i.e. me) wrapper `.cpp` files.
 try:
     from Cython.Build import cythonize
-    ext_modules = cythonize(['pydensecrf/eigen.pyx', 'pydensecrf/densecrf.pyx'])
+    ext_modules = cythonize([
+        Extension('pydensecrf/eigen', ['pydensecrf/eigen.pyx'], extra_compile_args=["-O0", "-g"]),
+        Extension('pydensecrf/densecrf', ['pydensecrf/densecrf.pyx'], extra_compile_args=["-O0", "-g"])
+        ])
 except ImportError:
     from setuptools.extension import Extension
     ext_modules = [
