@@ -1,5 +1,8 @@
+import sys
+
 import numpy as np
-import eigen as e
+
+from pydensecrf import eigen as e
 
 import pytest
 

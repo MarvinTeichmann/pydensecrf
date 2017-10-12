@@ -27,13 +27,10 @@ from pydensecrf import densecrf
 import pytest
 
 
-def test_expAndNormalize():
+def test_exp_and_normalize():
     np_matrix = np.random.randn(3, 3).astype(np.float32)
     result = densecrf.py_expAndNormalize(np_matrix)
-
-import ipdb # NOQA
-ipdb.set_trace()
-pass
+    return result
 
 
 if __name__ == '__main__':
