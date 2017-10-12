@@ -14,8 +14,8 @@ from setuptools.extension import Extension
 try:
     from Cython.Build import cythonize
     ext_modules = cythonize([
-        Extension('pydensecrf/eigen', ['pydensecrf/eigen.pyx'], extra_compile_args=["-O0", "-g"]),
-        Extension('pydensecrf/densecrf', ['pydensecrf/densecrf.pyx'], extra_compile_args=["-O0", "-g"])
+        Extension('pydensecrf.eigen', ['pydensecrf/eigen.pyx'], extra_compile_args=["-O0", "-g"]),
+        Extension('pydensecrf.densecrf', ['pydensecrf/densecrf.pyx'], extra_compile_args=["-O0", "-g"])
         ])
 except ImportError:
     from setuptools.extension import Extension
