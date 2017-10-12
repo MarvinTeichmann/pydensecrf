@@ -45,6 +45,8 @@ cdef extern from "densecrf/include/pairwise.h":
 
 
 cdef extern from "densecrf/include/densecrf.h":
+
+    void expAndNormalize ( MatrixXf & out, const MatrixXf & in );
     cdef cppclass c_DenseCRF "DenseCRF":
         c_DenseCRF(int N, int M) except +
 

@@ -32,6 +32,9 @@
 #include "pairwise.h"
 #include <vector>
 
+
+void expAndNormalize ( MatrixXf & out, const MatrixXf & in );
+
 /**** DenseCRF ****/
 class DenseCRF{
 protected:

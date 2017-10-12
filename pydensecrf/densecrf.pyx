@@ -100,6 +100,10 @@ cdef class DenseCRF:
     def klDivergence(self, MatrixXf Q):
         return self._this.klDivergence(Q.m)
 
+    def expAndNormalize
+        
+
+
 
 cdef class DenseCRF2D(DenseCRF):
 
