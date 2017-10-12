@@ -44,9 +44,11 @@ cdef extern from "densecrf/include/pairwise.h":
     cpdef enum KernelType: CONST_KERNEL, DIAG_KERNEL, FULL_KERNEL
 
 
-cdef extern from "densecrf/include/densecrf.h":
+cdef extern from "densecrf/include/densecrf.h":    
+    void expAndNormalize ( c_MatrixXf &out, const c_MatrixXf &)
 
-    void expAndNormalize ( MatrixXf & out, const MatrixXf & in );
+
+cdef extern from "densecrf/include/densecrf.h":
     cdef cppclass c_DenseCRF "DenseCRF":
         c_DenseCRF(int N, int M) except +
 

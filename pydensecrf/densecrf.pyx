@@ -7,6 +7,9 @@ from numbers import Number
 import eigen
 cimport eigen
 
+import numpy as np
+cimport numpy as np
+
 
 cdef LabelCompatibility* _labelcomp(compat) except NULL:
     if isinstance(compat, Number):
@@ -18,6 +21,21 @@ cdef LabelCompatibility* _labelcomp(compat) except NULL:
     else:
         raise ValueError("LabelCompatibility of dimension >2 not meaningful.")
     return NULL  # Important for the exception(s) to propagate!
+
+
+def py_expAndNormalize(np.ndarray[float, ndim=2, mode="c"] inp not None):
+
+    cdef int m, n
+    m, n = inp.shape[0], inp.shape[1]
+
+    cdef MatrixXf in_matrix = eigen.matrixXf(inp)
+    cdef MatrixXf out_matrix = eigen.matrixXf(inp)
+
+    expAndNormalize(out_matrix.m, in_matrix.m)
+
+    return np.array(out_matrix)
+
+    # return np.array(out_matrix)
 
 
 cdef class Unary:
@@ -43,7 +61,7 @@ cdef class ConstUnary(Unary):
 
 cdef class LogisticUnary(Unary):
     def __cinit__(self, float[:,::1] L not None, float[:,::1] f not None):
-        self.thisptr = new LogisticUnaryEnergy(eigen.c_matrixXf(L), eigen.c_matrixXf(f))
+        self.thisptr = new LogisticUnaryEnergy(eigen.c_matrixXf((L)), eigen.c_matrixXf(f))
 
 
 cdef class DenseCRF:
@@ -99,8 +117,6 @@ cdef class DenseCRF:
 
     def klDivergence(self, MatrixXf Q):
         return self._this.klDivergence(Q.m)
-
-    def expAndNormalize
         
 
 

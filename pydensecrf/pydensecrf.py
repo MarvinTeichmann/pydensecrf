@@ -29,6 +29,11 @@ from utils import unary_from_labels, create_pairwise_bilateral
 from utils import create_pairwise_gaussian
 
 
+def exp_and_normalize():
+
+    return out
+
+
 class DenseCRF():
     """This is a reimplementation of DenseCRF (almost) entirely in python.
     """
