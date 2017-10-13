@@ -29,7 +29,7 @@ import pytest
 
 def test_exp_and_normalize():
     np_matrix = np.random.randn(3, 3).astype(np.float32)
-    result = densecrf.py_expAndNormalize(np_matrix)
+    result = densecrf.exp_and_normalize(np_matrix)
     return result
 
 

@@ -23,7 +23,7 @@ cdef LabelCompatibility* _labelcomp(compat) except NULL:
     return NULL  # Important for the exception(s) to propagate!
 
 
-def py_expAndNormalize(np.ndarray[float, ndim=2, mode="c"] inp not None):
+def exp_and_normalize(np.ndarray[float, ndim=2, mode="c"] inp not None):
 
     cdef int m, n
     m, n = inp.shape[0], inp.shape[1]
