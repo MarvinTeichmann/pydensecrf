@@ -1,37 +1,17 @@
 import numpy as np
 import pydensecrf.densecrf as dcrf
 import pydensecrf.utils as utils
+from pydensecrf.tests import utils as test_utils
 
 import pytest
-
-
-def _get_simple_unary():
-    unary1 = np.zeros((10, 10), dtype=np.float32)
-    unary1[:, [0, -1]] = unary1[[0, -1], :] = 1
-
-    unary2 = np.zeros((10, 10), dtype=np.float32)
-    unary2[4:7, 4:7] = 1
-
-    unary = np.vstack([unary1.flat, unary2.flat])
-    unary = (unary + 1) / (np.sum(unary, axis=0) + 2)
-
-    return unary
-
-
-def _get_simple_img():
-
-    img = np.zeros((10, 10, 3), dtype=np.uint8)
-    img[2:8, 2:8, :] = 255
-
-    return img
 
 
 def test_call_dcrf2d():
 
     d = dcrf.DenseCRF2D(10, 10, 2)
 
-    unary = _get_simple_unary()
-    img = _get_simple_img()
+    unary = test_utils._get_simple_unary()
+    img = test_utils._get_simple_img()
 
     d.setUnaryEnergy(-np.log(unary))
     # d.setUnaryEnergy(PyConstUnary(-np.log(Up)))
@@ -45,8 +25,8 @@ def test_call_dcrf():
 
     d = dcrf.DenseCRF(100, 2)
 
-    unary = _get_simple_unary()
-    img = _get_simple_img()
+    unary = test_utils._get_simple_unary()
+    img = test_utils._get_simple_img()
 
     d.setUnaryEnergy(-np.log(unary))
     # d.setUnaryEnergy(PyConstUnary(-np.log(Up)))
@@ -64,8 +44,8 @@ def test_call_dcrf_eq_dcrf2d():
     d = dcrf.DenseCRF(100, 2)
     d2 = dcrf.DenseCRF2D(10, 10, 2)
 
-    unary = _get_simple_unary()
-    img = _get_simple_img()
+    unary = test_utils._get_simple_unary()
+    img = test_utils._get_simple_img()
 
     d.setUnaryEnergy(-np.log(unary))
     d2.setUnaryEnergy(-np.log(unary))
