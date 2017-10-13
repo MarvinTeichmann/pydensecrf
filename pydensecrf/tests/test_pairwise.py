@@ -18,8 +18,12 @@ import logging
 
 import pydensecrf.pairwise as pair
 
+from pydensecrf import densecrf
+
 import pydensecrf.utils as utils
 from pydensecrf.tests import utils as test_utils
+
+from pydensecrf.py_densecrf import exp_and_normalize
 
 
 def test_pairwise():
@@ -31,3 +35,36 @@ def test_pairwise():
     out = pairwise.apply(unary)
 
     return out
+
+
+def compute_inference(plist, lg_unary, num_iter):
+    prediction = exp_and_normalize(-lg_unary)
+    for i in range(num_iter):
+        tmp1 = -lg_unary
+        for potential in plist:
+            tmp2 = potential.apply(prediction)
+            tmp1 = tmp1 - tmp2
+        prediction = exp_and_normalize(tmp1)
+    return prediction
+
+
+def test_pairwise_inference():
+
+    dcrf = densecrf.DenseCRF(100, 2)
+    unary = test_utils._get_simple_unary()
+    img = test_utils._get_simple_img()
+
+    dcrf.setUnaryEnergy(-np.log(unary))
+    lg_unary = -np.log(unary)
+
+    feats = utils.create_pairwise_bilateral(sdims=(2, 2), schan=2,
+                                            img=img, chdim=2)
+
+    dcrf.addPairwiseEnergy(feats, compat=3)
+    pairwise = pair.PairwisePotentials(feats, compat=3)
+
+    dres = np.argmax(dcrf.inference(10), axis=0).reshape(10, 10)
+    out = compute_inference([pairwise], lg_unary, 10)
+    pres = np.argmax(out, axis=0).reshape(10, 10)
+
+    assert(np.all(dres == pres))
