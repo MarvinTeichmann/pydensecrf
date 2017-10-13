@@ -18,7 +18,9 @@ def test_call_dcrf2d():
 
     d.addPairwiseBilateral(sxy=2, srgb=2, rgbim=img, compat=3)
     # d.addPairwiseBilateral(2, 2, img, 3)
-    np.argmax(d.inference(10), axis=0).reshape(10, 10)
+    res = np.argmax(d.inference(10), axis=0).reshape(10, 10)
+
+    np.all(res == img[:, :, 0] / 255)
 
 
 def test_call_dcrf():
@@ -36,7 +38,9 @@ def test_call_dcrf():
 
     d.addPairwiseEnergy(feats, compat=3)
     # d.addPairwiseBilateral(2, 2, img, 3)
-    np.argmax(d.inference(10), axis=0).reshape(10, 10)
+    res = np.argmax(d.inference(10), axis=0).reshape(10, 10)
+
+    np.all(res == img[:, :, 0] / 255)
 
 
 def test_call_dcrf_eq_dcrf2d():

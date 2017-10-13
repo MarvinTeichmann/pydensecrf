@@ -34,7 +34,7 @@ setup(
     author_email="lucasb.eyer.be@gmail.com",
     url="http://github.com/lucasb-eyer/pydensecrf",
     ext_modules=ext_modules,
-    packages=["pydensecrf"],
+    packages=["pydensecrf", "pydensecrf.tests"],
     setup_requires=['cython>=0.22'],
     classifiers=[
         "Intended Audience :: Developers",
