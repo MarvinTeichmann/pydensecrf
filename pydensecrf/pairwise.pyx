@@ -7,6 +7,9 @@ from numbers import Number
 import eigen
 cimport eigen
 
+import numpy as np
+cimport numpy as np
+
 
 cdef LabelCompatibility* _labelcomp(compat) except NULL:
     if isinstance(compat, Number):
@@ -38,6 +41,13 @@ cdef class PairwisePotentials:
                 ntype=normalization)
         else:
             self._this = NULL
+
+
+    def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):
+        cdef MatrixXf in_matrix = eigen.matrixXf(inp)
+        cdef MatrixXf out_matrix = eigen.matrixXf(inp)
+        self._this.apply(out_matrix.m, in_matrix.m)
+        return np.array(out_matrix)
 
     def __dealloc__(self):
         # Because destructors are virtual, this is enough to delete any object

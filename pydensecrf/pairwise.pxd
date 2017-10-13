@@ -26,7 +26,7 @@ cdef extern from "densecrf/include/pairwise.h":
             KernelType ktype,
             NormalizationType ntype) except +
 
-        # void apply(c_MatrixXf & out, const c_MatrixXf & Q) const
+        void apply(c_MatrixXf & out, const c_MatrixXf & Q) const
 
 
 cdef class PairwisePotentials:
