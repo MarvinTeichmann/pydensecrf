@@ -20,8 +20,6 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
                     level=logging.INFO,
                     stream=sys.stdout)
 
-sys.path.insert(0, "../../")
-
 from pydensecrf import densecrf
 
 import pytest
