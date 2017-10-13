@@ -52,7 +52,13 @@ class DenseCRF():
         pass
 
     def inference(self, num_iter=5):
-        pass
+        prediction = exp_and_normalize(-self.unary)
+        for i in range(num_iter):
+            tmp1 = -self.unary
+            pass  # skipping pairwise inference for now
+            prediction = exp_and_normalize(tmp1)
+
+        return prediction
 
     def start_inference():
         pass
