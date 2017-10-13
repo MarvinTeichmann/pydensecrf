@@ -22,7 +22,8 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
 
 from pydensecrf import densecrf
 from pydensecrf import py_densecrf as pycrf
-from pydensecrf.tests import utils
+import pydensecrf.utils as utils
+from pydensecrf.tests import utils as test_utils
 
 import pytest
 
@@ -32,7 +33,7 @@ def test_unary_inference():
     dcrf = densecrf.DenseCRF(100, 2)
     pcrf = pycrf.DenseCRF(100, 2)
 
-    unary = utils._get_simple_unary()
+    unary = test_utils._get_simple_unary()
     dcrf.setUnaryEnergy(-np.log(unary))
     pcrf.set_unary_energy(-np.log(unary))
 
@@ -40,6 +41,30 @@ def test_unary_inference():
     pyresult = pcrf.inference(5)
 
     assert(np.all(np.array(cresult) == pyresult))
+
+
+def test_complete_inference():
+
+    dcrf = densecrf.DenseCRF(100, 2)
+    pcrf = pycrf.DenseCRF(100, 2)
+
+    unary = test_utils._get_simple_unary()
+    img = test_utils._get_simple_img()
+
+    dcrf.setUnaryEnergy(-np.log(unary))
+    pcrf.set_unary_energy(-np.log(unary))
+
+    feats = utils.create_pairwise_bilateral(sdims=(2, 2), schan=2,
+                                            img=img, chdim=2)
+
+    dcrf.addPairwiseEnergy(feats, compat=3)
+
+    pcrf.add_pairwise_energy(feats, compat=3)
+    # d.addPairwiseBilateral(2, 2, img, 3)
+    res1 = np.argmax(dcrf.inference(10), axis=0).reshape(10, 10)
+    res2 = np.argmax(pcrf.inference(10), axis=0).reshape(10, 10)
+
+    assert(np.all(res1 == res2))
 
 
 if __name__ == '__main__':
