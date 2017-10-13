@@ -45,7 +45,8 @@ cdef class PairwisePotentials:
 
     def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):
         cdef MatrixXf in_matrix = eigen.matrixXf(inp)
-        cdef MatrixXf out_matrix = eigen.matrixXf(inp)
+        m, n = inp.shape[0], inp.shape[1]
+        cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))
         self._this.apply(out_matrix.m, in_matrix.m)
         return np.array(out_matrix)
 

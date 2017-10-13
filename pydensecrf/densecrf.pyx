@@ -29,7 +29,7 @@ def exp_and_normalize(np.ndarray[float, ndim=2, mode="c"] inp not None):
     m, n = inp.shape[0], inp.shape[1]
 
     cdef MatrixXf in_matrix = eigen.matrixXf(inp)
-    cdef MatrixXf out_matrix = eigen.matrixXf(inp)
+    cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))
 
     expAndNormalize(out_matrix.m, in_matrix.m)
 
