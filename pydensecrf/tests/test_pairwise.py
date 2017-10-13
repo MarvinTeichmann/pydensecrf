@@ -23,9 +23,11 @@ from pydensecrf.tests import utils as test_utils
 
 
 def test_pairwise():
+    unary = test_utils._get_simple_unary()
     img = test_utils._get_simple_img()
     feats = utils.create_pairwise_bilateral(sdims=(2, 2), schan=2,
                                             img=img, chdim=2)
     pairwise = pair.PairwisePotentials(feats, compat=3)
+    out = pairwise.apply(unary)
 
-    return pairwise
+    return out
