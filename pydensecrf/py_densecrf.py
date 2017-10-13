@@ -21,17 +21,18 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
                     stream=sys.stdout)
 
 
-if __name__ == '__main__':
-    logging.info("Hello World.")
+from pydensecrf.utils import unary_from_labels, create_pairwise_bilateral
+from pydensecrf.utils import create_pairwise_gaussian
 
 
-from utils import unary_from_labels, create_pairwise_bilateral
-from utils import create_pairwise_gaussian
+def exp_and_normalize(features):
+    """
+    Aka "softmax" in deep learning literature
+    """
+    exp_features = np.exp(features - np.max(features, axis=0))
+    normalize_features = exp_features / np.sum(exp_features, axis=0)
 
-
-def exp_and_normalize():
-
-    return out
+    return normalize_features
 
 
 class DenseCRF():
