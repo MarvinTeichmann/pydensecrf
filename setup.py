@@ -16,7 +16,8 @@ try:
     ext_modules = cythonize([
         Extension('pydensecrf.eigen', ['pydensecrf/eigen.pyx'], extra_compile_args=["-O0", "-g"]),
         Extension('pydensecrf.densecrf', ['pydensecrf/densecrf.pyx'], extra_compile_args=["-O0", "-g"]),
-        Extension('pydensecrf.pairwise', ['pydensecrf/pairwise.pyx'], extra_compile_args=["-O0", "-g"])
+        Extension('pydensecrf.pairwise', ['pydensecrf/pairwise.pyx'], extra_compile_args=["-O0", "-g"]),
+        Extension('pydensecrf.lattice', ['pydensecrf/lattice.pyx'], extra_compile_args=["-O0", "-g"])
         ])
 except ImportError:
     from setuptools.extension import Extension
