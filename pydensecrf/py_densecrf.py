@@ -24,7 +24,7 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
 from pydensecrf.utils import unary_from_labels, create_pairwise_bilateral
 from pydensecrf.utils import create_pairwise_gaussian
 
-import pydensecrf.pairwise as pair
+import pydensecrf.lattice as pylattice
 
 
 def exp_and_normalize(features):
@@ -56,18 +56,54 @@ class DenseCRF():
         return
 
     def add_pairwise_energy(self, feats, compat=3,
-                            kernel_type=None, normalization=None):
+                            kernel_type="diag", norm="symmetric"):
 
-        kernel = pair.DenseKernel(feats)
-        self.kernel_list.append(kernel)
-        self.compact_list.append(lambda feat: potts_comp_update(3, feat))
+        self.kernel_list.append(self._init_lattice(feats, kernel_type, norm))
+        self.compact_list.append(self._init_comp(compat))
+
+    def _init_lattice(self, feats, kernel_type, norm):
+
+        if not kernel_type == "diag":
+            raise NotImplementedError
+        if not norm == "symmetric":
+            raise NotImplementedError
+
+        lattice = pylattice.Permutohedral()
+        lattice.init_filer(feats)
+
+        nfeats = np.ones([1, feats.shape[1]], dtype=np.float32)
+
+        norm = lattice.compute(nfeats)
+
+        norm = 1 / np.sqrt(norm + 1e-20)
+
+        def compute_lattice(inp):
+
+            # Normalize
+            norm_inp = inp * norm
+            # Apply lattice
+            message = lattice.compute(norm_inp)
+            # Normalize
+            norm_message = message * norm
+
+            return norm_message
+
+        return compute_lattice
+
+    def _init_comp(self, compat):
+
+        if type(compat) is not int and not float:
+            print("Compat is {}.".format(compat))
+            raise NotImplementedError
+
+        return lambda feat: potts_comp_update(compat, feat)
 
     def inference(self, num_iter=5):
         prediction = exp_and_normalize(-self.unary)
         for i in range(num_iter):
             tmp1 = -self.unary
             for kernel, comp in zip(self.kernel_list, self.compact_list):
-                tmp2 = kernel.apply(prediction)
+                tmp2 = kernel(prediction)
 
                 tmp2 = comp(tmp2)
                 tmp1 = tmp1 - tmp2
