@@ -53,11 +53,33 @@ cdef class PairwisePotentials:
             del self._this
 
 
-# cdef class DenseKernel:
+cdef class DenseKernel:
+    def __cinit__(self,
+                  float[:,::1] features not None,
+                  KernelType kernel=DIAG_KERNEL,
+                  NormalizationType normalization=NORMALIZE_SYMMETRIC):
 
-#    def __cinit__(
-#        self,
-#        float[:,::1] features not None,
-#        KernelType kernel=DIAG_KERNEL,
-#        NormalizationType normalization=NORMALIZE_SYMMETRIC):
-#        pass
+        self._this = new c_DenseKernel(eigen.c_matrixXf(features), ktype=kernel,
+                    ntype=normalization)
+
+    def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):
+        cdef MatrixXf in_matrix = eigen.matrixXf(inp)
+        m, n = inp.shape[0], inp.shape[1]
+        cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))
+        self._this.apply(out_matrix.m, in_matrix.m)
+        return np.array(out_matrix, order="C")
+
+
+
+cdef class PottsComp:
+    def __cinit__(self, float weight):
+        self._this = new PottsCompatibility(weight)
+
+    def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):
+        cdef MatrixXf in_matrix = eigen.matrixXf(inp)
+        m, n = inp.shape[0], inp.shape[1]
+        cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))
+        self._this.apply(out_matrix.m, in_matrix.m)
+        return np.array(out_matrix)
+
+       

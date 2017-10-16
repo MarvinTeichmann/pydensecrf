@@ -37,7 +37,7 @@ def test_pairwise():
     return out
 
 
-def compute_inference(plist, lg_unary, num_iter):
+def compute_inference_with_pair(plist, lg_unary, num_iter):
     prediction = exp_and_normalize(-lg_unary)
     for i in range(num_iter):
         tmp1 = -lg_unary
@@ -64,7 +64,42 @@ def test_pairwise_inference():
     pairwise = pair.PairwisePotentials(feats, compat=3)
 
     dres = np.argmax(dcrf.inference(10), axis=0).reshape(10, 10)
-    out = compute_inference([pairwise], lg_unary, 10)
+    out = compute_inference_with_pair([pairwise], lg_unary, 10)
+    pres = np.argmax(out, axis=0).reshape(10, 10)
+
+    assert(np.all(dres == pres))
+
+
+def compute_inference_with_dkernel(klist, clist, lg_unary, num_iter):
+    prediction = exp_and_normalize(-lg_unary)
+    for i in range(num_iter):
+        tmp1 = -lg_unary
+        for kernel, comp in zip(klist, clist):
+            tmp2 = kernel.apply(prediction)
+            tmp2 = comp.apply(tmp2)
+            tmp1 = tmp1 - tmp2
+        prediction = exp_and_normalize(tmp1)
+    return prediction
+
+
+def test_dkernel_inference():
+
+    dcrf = densecrf.DenseCRF(100, 2)
+    unary = test_utils._get_simple_unary()
+    img = test_utils._get_simple_img()
+
+    dcrf.setUnaryEnergy(-np.log(unary))
+    lg_unary = -np.log(unary)
+
+    feats = utils.create_pairwise_bilateral(sdims=(2, 2), schan=2,
+                                            img=img, chdim=2)
+
+    dcrf.addPairwiseEnergy(feats, compat=3)
+    klist = [pair.DenseKernel(feats)]
+    clist = [pair.PottsComp(3)]
+
+    dres = np.argmax(dcrf.inference(10), axis=0).reshape(10, 10)
+    out = compute_inference_with_dkernel(klist, clist, lg_unary, 10)
     pres = np.argmax(out, axis=0).reshape(10, 10)
 
     assert(np.all(dres == pres))

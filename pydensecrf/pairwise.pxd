@@ -7,6 +7,7 @@ cdef extern from "densecrf/include/labelcompatibility.h":
 
     cdef cppclass PottsCompatibility(LabelCompatibility):
         PottsCompatibility(float) except +
+        void apply( c_MatrixXf & out_values, const c_MatrixXf & in_values ) const
 
     cdef cppclass DiagonalCompatibility(LabelCompatibility):
         DiagonalCompatibility(const c_VectorXf&) except +
@@ -40,6 +41,10 @@ cdef class PairwisePotentials:
     cdef c_PairwisePotentials *_this
 
 
-#cdef class DenseKernel:
-#    cdef c_DenseKernel *_this
+cdef class DenseKernel:
+    cdef c_DenseKernel *_this
+
+
+cdef class PottsComp:
+    cdef PottsCompatibility *_this
 

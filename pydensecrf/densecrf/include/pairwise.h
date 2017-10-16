@@ -51,6 +51,30 @@ public:
 	virtual VectorXf gradient( const MatrixXf & b, const MatrixXf & Q ) const = 0;
 };
 
+
+class DenseKernel: public Kernel {
+protected:
+    NormalizationType ntype_;
+    KernelType ktype_;
+    Permutohedral lattice_;
+    VectorXf norm_;
+    MatrixXf f_;
+    MatrixXf parameters_;
+    void initLattice( const MatrixXf & f );
+    void filter( MatrixXf & out, const MatrixXf & in, bool transpose ) const;
+    // Compute d/df a^T*K*b
+    MatrixXf kernelGradient( const MatrixXf & a, const MatrixXf & b ) const;
+    MatrixXf featureGradient( const MatrixXf & a, const MatrixXf & b ) const;
+public:
+    DenseKernel(const MatrixXf & f, KernelType ktype, NormalizationType ntype);
+    virtual void apply( MatrixXf & out, const MatrixXf & Q ) const;
+    virtual void applyTranspose( MatrixXf & out, const MatrixXf & Q ) const;
+    virtual VectorXf parameters() const;
+    virtual void setParameters( const VectorXf & p );
+    virtual VectorXf gradient( const MatrixXf & a, const MatrixXf & b ) const;
+};
+
+
 class PairwisePotential{
 protected:
 	LabelCompatibility * compatibility_;
@@ -71,3 +95,5 @@ public:
 	virtual VectorXf gradient( const MatrixXf & b, const MatrixXf & Q ) const;
 	virtual VectorXf kernelGradient( const MatrixXf & b, const MatrixXf & Q ) const;
 };
+
+
