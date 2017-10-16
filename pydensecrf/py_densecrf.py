@@ -50,7 +50,6 @@ class DenseCRF():
         self.nclasses = nclasses
         self.kernel_list = []
         self.compact_list = []
-        self.potential_list = []
 
     def set_unary_energy(self, unary):
         self.unary = unary
@@ -61,8 +60,7 @@ class DenseCRF():
 
         kernel = pair.DenseKernel(feats)
         self.kernel_list.append(kernel)
-        self.compact_list.append(pair.PottsComp(compat))
-        self.potential_list.append(pair.PairwisePotentials(feats, compat))
+        self.compact_list.append(lambda feat: potts_comp_update(3, feat))
 
     def inference(self, num_iter=5):
         prediction = exp_and_normalize(-self.unary)
@@ -71,7 +69,7 @@ class DenseCRF():
             for kernel, comp in zip(self.kernel_list, self.compact_list):
                 tmp2 = kernel.apply(prediction)
 
-                tmp2 = comp.apply(tmp2)
+                tmp2 = comp(tmp2)
                 tmp1 = tmp1 - tmp2
             prediction = exp_and_normalize(tmp1)
 
