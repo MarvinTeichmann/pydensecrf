@@ -67,5 +67,42 @@ def test_complete_inference():
     assert(np.all(res1 == res2))
 
 
+def test_complete_inference2():
+
+    dcrf = densecrf.DenseCRF(100, 2)
+    pcrf = pycrf.DenseCRF(100, 2)
+
+    unary = test_utils._get_simple_unary()
+    img = test_utils._get_simple_img()
+
+    dcrf.setUnaryEnergy(-np.log(unary))
+    pcrf.set_unary_energy(-np.log(unary))
+
+    feats = utils.create_pairwise_gaussian(sdims=(1.5, 1.5),
+                                           shape=img.shape[:2])
+
+    dcrf.addPairwiseEnergy(feats, compat=3)
+    pcrf.add_pairwise_energy(feats, compat=3)
+
+    feats = utils.create_pairwise_bilateral(sdims=(2, 2), schan=2,
+                                            img=img, chdim=2)
+
+    dcrf.addPairwiseEnergy(feats, compat=3)
+    pcrf.add_pairwise_energy(feats, compat=3)
+    # d.addPairwiseBilateral(2, 2, img, 3)
+    res1 = np.argmax(dcrf.inference(10), axis=0).reshape(10, 10)
+    res2 = np.argmax(pcrf.inference(10), axis=0).reshape(10, 10)
+
+    if False:
+        # Save the result for visual inspection
+
+        import scipy as scp
+        import scipy.misc
+
+        scp.misc.imsave("test.png", res1)
+
+    assert(np.all(res1 == res2))
+
+
 if __name__ == '__main__':
     logging.info("Hello World.")
