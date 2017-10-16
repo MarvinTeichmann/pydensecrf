@@ -29,5 +29,17 @@ cdef extern from "densecrf/include/pairwise.h":
         void apply(c_MatrixXf & out, const c_MatrixXf & Q) const
 
 
+cdef extern from "densecrf/include/pairwise.h":
+    cdef cppclass c_DenseKernel "DenseKernel":
+        c_DenseKernel(const c_MatrixXf & f, KernelType ktype, NormalizationType ntype);
+
+        void apply( c_MatrixXf & out, const c_MatrixXf & Q ) const;
+
+
 cdef class PairwisePotentials:
     cdef c_PairwisePotentials *_this
+
+
+#cdef class DenseKernel:
+#    cdef c_DenseKernel *_this
+

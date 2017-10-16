@@ -29,19 +29,15 @@ cdef class PairwisePotentials:
         self, 
         float[:,::1] features not None, 
         compat, KernelType kernel=DIAG_KERNEL,
-        NormalizationType normalization=NORMALIZE_SYMMETRIC, *_, **__):
+        NormalizationType normalization=NORMALIZE_SYMMETRIC):
         # We need to swallow extra-arguments because superclass cinit function
         # will always be called with the same params as the subclass, automatically.
 
         # We also only want to avoid creating an object if we're just being called
         # from a subclass as part of the hierarchy.
-        if type(self) is PairwisePotentials:
-            self._this = new c_PairwisePotentials(
-                eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,
+        self._this = new c_PairwisePotentials(
+            eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,
                 ntype=normalization)
-        else:
-            self._this = NULL
-
 
     def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):
         cdef MatrixXf in_matrix = eigen.matrixXf(inp)
@@ -55,3 +51,13 @@ cdef class PairwisePotentials:
         # of child classes too.
         if self._this:
             del self._this
+
+
+# cdef class DenseKernel:
+
+#    def __cinit__(
+#        self,
+#        float[:,::1] features not None,
+#        KernelType kernel=DIAG_KERNEL,
+#        NormalizationType normalization=NORMALIZE_SYMMETRIC):
+#        pass

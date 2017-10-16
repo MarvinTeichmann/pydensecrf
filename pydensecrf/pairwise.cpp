@@ -1210,11 +1210,12 @@ struct __pyx_obj_10pydensecrf_5eigen_MatrixXf {
 };
 
 
-/* "pydensecrf/pairwise.pxd":32
+/* "pydensecrf/pairwise.pxd":39
  * 
  * 
  * cdef class PairwisePotentials:             # <<<<<<<<<<<<<<
  *     cdef c_PairwisePotentials *_this
+ * 
  */
 struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials {
   PyObject_HEAD
@@ -2645,7 +2646,7 @@ static PyObject *__pyx_n_s_v;
 static PyObject *__pyx_n_s_value;
 static PyObject *__pyx_n_s_values;
 static PyObject *__pyx_n_s_zeros;
-static int __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials___cinit__(struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *__pyx_v_self, __Pyx_memviewslice __pyx_v_features, PyObject *__pyx_v_compat, enum KernelType __pyx_v_kernel, enum NormalizationType __pyx_v_normalization, CYTHON_UNUSED PyObject *__pyx_v__, CYTHON_UNUSED PyObject *__pyx_v___); /* proto */
+static int __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials___cinit__(struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *__pyx_v_self, __Pyx_memviewslice __pyx_v_features, PyObject *__pyx_v_compat, enum KernelType __pyx_v_kernel, enum NormalizationType __pyx_v_normalization); /* proto */
 static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *__pyx_v_self, PyArrayObject *__pyx_v_inp); /* proto */
 static void __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_4__dealloc__(struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *__pyx_v_self); /* proto */
@@ -2989,24 +2990,9 @@ static int __pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_1__cinit__(PyObj
   PyObject *__pyx_v_compat = 0;
   enum KernelType __pyx_v_kernel;
   enum NormalizationType __pyx_v_normalization;
-  CYTHON_UNUSED PyObject *__pyx_v__ = 0;
-  CYTHON_UNUSED PyObject *__pyx_v___ = 0;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
-  __pyx_v___ = PyDict_New(); if (unlikely(!__pyx_v___)) return -1;
-  __Pyx_GOTREF(__pyx_v___);
-  if (PyTuple_GET_SIZE(__pyx_args) > 4) {
-    __pyx_v__ = PyTuple_GetSlice(__pyx_args, 4, PyTuple_GET_SIZE(__pyx_args));
-    if (unlikely(!__pyx_v__)) {
-      __Pyx_DECREF(__pyx_v___); __pyx_v___ = 0;
-      __Pyx_RefNannyFinishContext();
-      return -1;
-    }
-    __Pyx_GOTREF(__pyx_v__);
-  } else {
-    __pyx_v__ = __pyx_empty_tuple; __Pyx_INCREF(__pyx_empty_tuple);
-  }
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_features,&__pyx_n_s_compat,&__pyx_n_s_kernel,&__pyx_n_s_normalization,0};
     PyObject* values[4] = {0,0,0,0};
@@ -3014,7 +3000,6 @@ static int __pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_1__cinit__(PyObj
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
-        default:
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
         CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
@@ -3024,6 +3009,7 @@ static int __pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_1__cinit__(PyObj
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         CYTHON_FALLTHROUGH;
         case  0: break;
+        default: goto __pyx_L5_argtuple_error;
       }
       kw_args = PyDict_Size(__pyx_kwds);
       switch (pos_args) {
@@ -3050,12 +3036,10 @@ static int __pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_1__cinit__(PyObj
         }
       }
       if (unlikely(kw_args > 0)) {
-        const Py_ssize_t used_pos_args = (pos_args < 4) ? pos_args : 4;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v___, values, used_pos_args, "__cinit__") < 0)) __PYX_ERR(0, 28, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 28, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
-        default:
         case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
         CYTHON_FALLTHROUGH;
         case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
@@ -3063,9 +3047,7 @@ static int __pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_1__cinit__(PyObj
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         break;
-        case  1:
-        case  0:
-        goto __pyx_L5_argtuple_error;
+        default: goto __pyx_L5_argtuple_error;
       }
     }
     __pyx_v_features = __Pyx_PyObject_to_MemoryviewSlice_d_dc_float(values[0]); if (unlikely(!__pyx_v_features.memview)) __PYX_ERR(0, 30, __pyx_L3_error)
@@ -3085,8 +3067,6 @@ static int __pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_1__cinit__(PyObj
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 2, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 28, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_DECREF(__pyx_v__); __pyx_v__ = 0;
-  __Pyx_DECREF(__pyx_v___); __pyx_v___ = 0;
   __Pyx_AddTraceback("pydensecrf.pairwise.PairwisePotentials.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
@@ -3094,84 +3074,47 @@ static int __pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_1__cinit__(PyObj
   if (unlikely(((PyObject *)__pyx_v_features.memview) == Py_None)) {
     PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "features"); __PYX_ERR(0, 30, __pyx_L1_error)
   }
-  __pyx_r = __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials___cinit__(((struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *)__pyx_v_self), __pyx_v_features, __pyx_v_compat, __pyx_v_kernel, __pyx_v_normalization, __pyx_v__, __pyx_v___);
+  __pyx_r = __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials___cinit__(((struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *)__pyx_v_self), __pyx_v_features, __pyx_v_compat, __pyx_v_kernel, __pyx_v_normalization);
 
   /* function exit code */
   goto __pyx_L0;
   __pyx_L1_error:;
   __pyx_r = -1;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v__);
-  __Pyx_XDECREF(__pyx_v___);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials___cinit__(struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *__pyx_v_self, __Pyx_memviewslice __pyx_v_features, PyObject *__pyx_v_compat, enum KernelType __pyx_v_kernel, enum NormalizationType __pyx_v_normalization, CYTHON_UNUSED PyObject *__pyx_v__, CYTHON_UNUSED PyObject *__pyx_v___) {
+static int __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials___cinit__(struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *__pyx_v_self, __Pyx_memviewslice __pyx_v_features, PyObject *__pyx_v_compat, enum KernelType __pyx_v_kernel, enum NormalizationType __pyx_v_normalization) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  int __pyx_t_2;
-  LabelCompatibility *__pyx_t_3;
-  PairwisePotential *__pyx_t_4;
+  LabelCompatibility *__pyx_t_1;
+  PairwisePotential *__pyx_t_2;
   __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "pydensecrf/pairwise.pyx":39
+ *         # from a subclass as part of the hierarchy.
+ *         self._this = new c_PairwisePotentials(
+ *             eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,             # <<<<<<<<<<<<<<
+ *                 ntype=normalization)
+ * 
+ */
+  __pyx_t_1 = __pyx_f_10pydensecrf_8pairwise__labelcomp(__pyx_v_compat); if (unlikely(__pyx_t_1 == ((LabelCompatibility *)NULL))) __PYX_ERR(0, 39, __pyx_L1_error)
 
   /* "pydensecrf/pairwise.pyx":38
  *         # We also only want to avoid creating an object if we're just being called
  *         # from a subclass as part of the hierarchy.
- *         if type(self) is PairwisePotentials:             # <<<<<<<<<<<<<<
- *             self._this = new c_PairwisePotentials(
- *                 eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,
- */
-  __pyx_t_1 = (((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))) == ((PyObject *)__pyx_ptype_10pydensecrf_8pairwise_PairwisePotentials));
-  __pyx_t_2 = (__pyx_t_1 != 0);
-  if (__pyx_t_2) {
-
-    /* "pydensecrf/pairwise.pyx":40
- *         if type(self) is PairwisePotentials:
- *             self._this = new c_PairwisePotentials(
- *                 eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,             # <<<<<<<<<<<<<<
- *                 ntype=normalization)
- *         else:
- */
-    __pyx_t_3 = __pyx_f_10pydensecrf_8pairwise__labelcomp(__pyx_v_compat); if (unlikely(__pyx_t_3 == ((LabelCompatibility *)NULL))) __PYX_ERR(0, 40, __pyx_L1_error)
-
-    /* "pydensecrf/pairwise.pyx":39
- *         # from a subclass as part of the hierarchy.
- *         if type(self) is PairwisePotentials:
- *             self._this = new c_PairwisePotentials(             # <<<<<<<<<<<<<<
- *                 eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,
+ *         self._this = new c_PairwisePotentials(             # <<<<<<<<<<<<<<
+ *             eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,
  *                 ntype=normalization)
  */
-    try {
-      __pyx_t_4 = new PairwisePotential(__pyx_f_10pydensecrf_5eigen_c_matrixXf(__pyx_v_features), __pyx_t_3, __pyx_v_kernel, __pyx_v_normalization);
-    } catch(...) {
-      __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 39, __pyx_L1_error)
-    }
-    __pyx_v_self->_this = __pyx_t_4;
-
-    /* "pydensecrf/pairwise.pyx":38
- *         # We also only want to avoid creating an object if we're just being called
- *         # from a subclass as part of the hierarchy.
- *         if type(self) is PairwisePotentials:             # <<<<<<<<<<<<<<
- *             self._this = new c_PairwisePotentials(
- *                 eigen.c_matrixXf(features), _labelcomp(compat), ktype=kernel,
- */
-    goto __pyx_L3;
+  try {
+    __pyx_t_2 = new PairwisePotential(__pyx_f_10pydensecrf_5eigen_c_matrixXf(__pyx_v_features), __pyx_t_1, __pyx_v_kernel, __pyx_v_normalization);
+  } catch(...) {
+    __Pyx_CppExn2PyErr();
+    __PYX_ERR(0, 38, __pyx_L1_error)
   }
-
-  /* "pydensecrf/pairwise.pyx":43
- *                 ntype=normalization)
- *         else:
- *             self._this = NULL             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  /*else*/ {
-    __pyx_v_self->_this = NULL;
-  }
-  __pyx_L3:;
+  __pyx_v_self->_this = __pyx_t_2;
 
   /* "pydensecrf/pairwise.pyx":28
  * cdef class PairwisePotentials:
@@ -3193,8 +3136,8 @@ static int __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials___cinit__(struct
   return __pyx_r;
 }
 
-/* "pydensecrf/pairwise.pyx":46
- * 
+/* "pydensecrf/pairwise.pyx":42
+ *                 ntype=normalization)
  * 
  *     def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):             # <<<<<<<<<<<<<<
  *         cdef MatrixXf in_matrix = eigen.matrixXf(inp)
@@ -3207,7 +3150,7 @@ static PyObject *__pyx_pw_10pydensecrf_8pairwise_18PairwisePotentials_3apply(PyO
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("apply (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_inp), __pyx_ptype_5numpy_ndarray, 0, "inp", 0))) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_inp), __pyx_ptype_5numpy_ndarray, 0, "inp", 0))) __PYX_ERR(0, 42, __pyx_L1_error)
   __pyx_r = __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(((struct __pyx_obj_10pydensecrf_8pairwise_PairwisePotentials *)__pyx_v_self), ((PyArrayObject *)__pyx_v_inp));
 
   /* function exit code */
@@ -3245,20 +3188,20 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
   __pyx_pybuffernd_inp.rcbuffer = &__pyx_pybuffer_inp;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_inp.rcbuffer->pybuffer, (PyObject*)__pyx_v_inp, &__Pyx_TypeInfo_float, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 46, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_inp.rcbuffer->pybuffer, (PyObject*)__pyx_v_inp, &__Pyx_TypeInfo_float, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 42, __pyx_L1_error)
   }
   __pyx_pybuffernd_inp.diminfo[0].strides = __pyx_pybuffernd_inp.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_inp.diminfo[0].shape = __pyx_pybuffernd_inp.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_inp.diminfo[1].strides = __pyx_pybuffernd_inp.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_inp.diminfo[1].shape = __pyx_pybuffernd_inp.rcbuffer->pybuffer.shape[1];
 
-  /* "pydensecrf/pairwise.pyx":47
+  /* "pydensecrf/pairwise.pyx":43
  * 
  *     def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):
  *         cdef MatrixXf in_matrix = eigen.matrixXf(inp)             # <<<<<<<<<<<<<<
  *         m, n = inp.shape[0], inp.shape[1]
  *         cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_eigen); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_eigen); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_matrixXf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_matrixXf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -3272,13 +3215,13 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_inp)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, ((PyObject *)__pyx_v_inp)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, ((PyObject *)__pyx_v_inp)};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -3286,29 +3229,29 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, ((PyObject *)__pyx_v_inp)};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_INCREF(((PyObject *)__pyx_v_inp));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_inp));
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, ((PyObject *)__pyx_v_inp));
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_10pydensecrf_5eigen_MatrixXf))))) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_10pydensecrf_5eigen_MatrixXf))))) __PYX_ERR(0, 43, __pyx_L1_error)
   __pyx_v_in_matrix = ((struct __pyx_obj_10pydensecrf_5eigen_MatrixXf *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pydensecrf/pairwise.pyx":48
+  /* "pydensecrf/pairwise.pyx":44
  *     def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):
  *         cdef MatrixXf in_matrix = eigen.matrixXf(inp)
  *         m, n = inp.shape[0], inp.shape[1]             # <<<<<<<<<<<<<<
@@ -3320,28 +3263,28 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
   __pyx_v_m = __pyx_t_5;
   __pyx_v_n = __pyx_t_6;
 
-  /* "pydensecrf/pairwise.pyx":49
+  /* "pydensecrf/pairwise.pyx":45
  *         cdef MatrixXf in_matrix = eigen.matrixXf(inp)
  *         m, n = inp.shape[0], inp.shape[1]
  *         cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))             # <<<<<<<<<<<<<<
  *         self._this.apply(out_matrix.m, in_matrix.m)
  *         return np.array(out_matrix)
  */
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_eigen); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_eigen); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_matrixXf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_matrixXf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyInt_From_Py_intptr_t(__pyx_v_m); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_Py_intptr_t(__pyx_v_m); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_9 = __Pyx_PyInt_From_Py_intptr_t(__pyx_v_n); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_From_Py_intptr_t(__pyx_v_n); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = PyList_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_10 = PyList_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_7);
   PyList_SET_ITEM(__pyx_t_10, 0, __pyx_t_7);
@@ -3360,14 +3303,14 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     }
   }
   if (!__pyx_t_9) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_10};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -3376,31 +3319,31 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_10};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_9); __pyx_t_9 = NULL;
       __Pyx_GIVEREF(__pyx_t_10);
       PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_10);
       __pyx_t_10 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_7, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float32); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float32); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -3414,14 +3357,14 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_7};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -3430,20 +3373,20 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_7};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_7);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_7);
       __pyx_t_7 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
@@ -3460,14 +3403,14 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     }
   }
   if (!__pyx_t_8) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3476,30 +3419,30 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_10pydensecrf_5eigen_MatrixXf))))) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_10pydensecrf_5eigen_MatrixXf))))) __PYX_ERR(0, 45, __pyx_L1_error)
   __pyx_v_out_matrix = ((struct __pyx_obj_10pydensecrf_5eigen_MatrixXf *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pydensecrf/pairwise.pyx":50
+  /* "pydensecrf/pairwise.pyx":46
  *         m, n = inp.shape[0], inp.shape[1]
  *         cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))
  *         self._this.apply(out_matrix.m, in_matrix.m)             # <<<<<<<<<<<<<<
@@ -3508,7 +3451,7 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
  */
   __pyx_v_self->_this->apply(__pyx_v_out_matrix->m, __pyx_v_in_matrix->m);
 
-  /* "pydensecrf/pairwise.pyx":51
+  /* "pydensecrf/pairwise.pyx":47
  *         cdef MatrixXf out_matrix = eigen.matrixXf(np.zeros([m, n]).astype(np.float32))
  *         self._this.apply(out_matrix.m, in_matrix.m)
  *         return np.array(out_matrix)             # <<<<<<<<<<<<<<
@@ -3516,9 +3459,9 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
  *     def __dealloc__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -3532,13 +3475,13 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, ((PyObject *)__pyx_v_out_matrix)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, ((PyObject *)__pyx_v_out_matrix)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, ((PyObject *)__pyx_v_out_matrix)};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -3546,19 +3489,19 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, ((PyObject *)__pyx_v_out_matrix)};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_INCREF(((PyObject *)__pyx_v_out_matrix));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_out_matrix));
       PyTuple_SET_ITEM(__pyx_t_3, 0+1, ((PyObject *)__pyx_v_out_matrix));
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
@@ -3568,8 +3511,8 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "pydensecrf/pairwise.pyx":46
- * 
+  /* "pydensecrf/pairwise.pyx":42
+ *                 ntype=normalization)
  * 
  *     def apply(self, np.ndarray[float, ndim=2, mode="c"] inp not None):             # <<<<<<<<<<<<<<
  *         cdef MatrixXf in_matrix = eigen.matrixXf(inp)
@@ -3605,7 +3548,7 @@ static PyObject *__pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_2apply(str
   return __pyx_r;
 }
 
-/* "pydensecrf/pairwise.pyx":53
+/* "pydensecrf/pairwise.pyx":49
  *         return np.array(out_matrix)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -3629,31 +3572,35 @@ static void __pyx_pf_10pydensecrf_8pairwise_18PairwisePotentials_4__dealloc__(st
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "pydensecrf/pairwise.pyx":56
+  /* "pydensecrf/pairwise.pyx":52
  *         # Because destructors are virtual, this is enough to delete any object
  *         # of child classes too.
  *         if self._this:             # <<<<<<<<<<<<<<
  *             del self._this
+ * 
  */
   __pyx_t_1 = (__pyx_v_self->_this != 0);
   if (__pyx_t_1) {
 
-    /* "pydensecrf/pairwise.pyx":57
+    /* "pydensecrf/pairwise.pyx":53
  *         # of child classes too.
  *         if self._this:
  *             del self._this             # <<<<<<<<<<<<<<
+ * 
+ * 
  */
     delete __pyx_v_self->_this;
 
-    /* "pydensecrf/pairwise.pyx":56
+    /* "pydensecrf/pairwise.pyx":52
  *         # Because destructors are virtual, this is enough to delete any object
  *         # of child classes too.
  *         if self._this:             # <<<<<<<<<<<<<<
  *             del self._this
+ * 
  */
   }
 
-  /* "pydensecrf/pairwise.pyx":53
+  /* "pydensecrf/pairwise.pyx":49
  *         return np.array(out_matrix)
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -22618,7 +22565,7 @@ static int __pyx_pymod_exec_pairwise(PyObject *__pyx_pyinit_module)
  *         self,
  *         float[:,::1] features not None,
  *         compat, KernelType kernel=DIAG_KERNEL,             # <<<<<<<<<<<<<<
- *         NormalizationType normalization=NORMALIZE_SYMMETRIC, *_, **__):
+ *         NormalizationType normalization=NORMALIZE_SYMMETRIC):
  *         # We need to swallow extra-arguments because superclass cinit function
  */
   __pyx_k__2 = DIAG_KERNEL;
@@ -22626,7 +22573,7 @@ static int __pyx_pymod_exec_pairwise(PyObject *__pyx_pyinit_module)
   /* "pydensecrf/pairwise.pyx":32
  *         float[:,::1] features not None,
  *         compat, KernelType kernel=DIAG_KERNEL,
- *         NormalizationType normalization=NORMALIZE_SYMMETRIC, *_, **__):             # <<<<<<<<<<<<<<
+ *         NormalizationType normalization=NORMALIZE_SYMMETRIC):             # <<<<<<<<<<<<<<
  *         # We need to swallow extra-arguments because superclass cinit function
  *         # will always be called with the same params as the subclass, automatically.
  */
