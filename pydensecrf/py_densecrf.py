@@ -37,6 +37,10 @@ def exp_and_normalize(features):
     return normalize_features
 
 
+def potts_comp_update(weight, features):
+    return -weight * features
+
+
 class DenseCRF():
     """This is a reimplementation of DenseCRF (almost) entirely in python.
     """
@@ -44,6 +48,8 @@ class DenseCRF():
         super(DenseCRF, self).__init__()
         self.npixels = npixels
         self.nclasses = nclasses
+        self.kernel_list = []
+        self.compact_list = []
         self.potential_list = []
 
     def set_unary_energy(self, unary):
@@ -51,17 +57,21 @@ class DenseCRF():
         return
 
     def add_pairwise_energy(self, feats, compat=3,
-                            kernel=None, normalization=None):
+                            kernel_type=None, normalization=None):
 
-        edgep = pair.PairwisePotentials(feats, compat=compat)
-        self.potential_list.append(edgep)
+        kernel = pair.DenseKernel(feats)
+        self.kernel_list.append(kernel)
+        self.compact_list.append(pair.PottsComp(compat))
+        self.potential_list.append(pair.PairwisePotentials(feats, compat))
 
     def inference(self, num_iter=5):
         prediction = exp_and_normalize(-self.unary)
         for i in range(num_iter):
             tmp1 = -self.unary
-            for potential in self.potential_list:
-                tmp2 = potential.apply(prediction)
+            for kernel, comp in zip(self.kernel_list, self.compact_list):
+                tmp2 = kernel.apply(prediction)
+
+                tmp2 = comp.apply(tmp2)
                 tmp1 = tmp1 - tmp2
             prediction = exp_and_normalize(tmp1)
 

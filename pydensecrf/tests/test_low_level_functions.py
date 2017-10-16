@@ -22,6 +22,7 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
 
 from pydensecrf import densecrf
 from pydensecrf import py_densecrf as pycrf
+from pydensecrf import pairwise as pair
 
 import pytest
 
@@ -36,6 +37,15 @@ def test_eq_exp_and_normalize():
     np_matrix = np.random.randn(2, 4).astype(np.float32)
     cresult = densecrf.exp_and_normalize(np_matrix)
     pyresult = pycrf.exp_and_normalize(np_matrix)
+    assert(np.all(cresult == pyresult))
+
+
+def test_potts_comp_update():
+    np_matrix = np.random.randn(2, 4).astype(np.float32)
+    weight = 10 * np.random.rand()
+    pyresult = pycrf.potts_comp_update(weight, np_matrix)
+    c_comp = pair.PottsComp(weight)
+    cresult = c_comp.apply(np_matrix)
     assert(np.all(cresult == pyresult))
 
 
