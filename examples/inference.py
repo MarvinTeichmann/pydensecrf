@@ -6,6 +6,8 @@ import sys
 import numpy as np
 import pydensecrf.densecrf as dcrf
 
+import time
+
 # Get im{read,write} from somewhere.
 try:
     from cv2 import imread, imwrite
@@ -68,6 +70,7 @@ print(n_labels, " labels", (" plus \"unknown\" 0: " if HAS_UNK else ""), set(lab
 ###########################
 use_2d = False
 # use_2d = True
+start_time = time.time()
 if use_2d:
     print("Using 2D specialized functions")
 
@@ -116,7 +119,10 @@ else:
 ####################################
 
 # Run five inference steps.
+
 Q = d.inference(5)
+end_time = time.time() - start_time
+print("Inference took {} seconds.".format(end_time))
 
 # Find out the most probable class for each pixel.
 MAP = np.argmax(Q, axis=0)
